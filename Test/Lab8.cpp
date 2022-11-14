@@ -1,11 +1,41 @@
-﻿// Test.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+﻿// Lab8.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
 //
 
 #include <iostream>
 
+#include "Header.h"
+
+template <typename T>
+std::ostream& operator<<(std::ostream& os, std::list<T> list)
+{
+    for (const T& var : list)
+    {
+        os << var << ' ';
+    }
+    os << '\n';
+    return os;
+
+};
+
+void PrintGraph(std::vector<std::list<int>> graph)
+{
+    for (int i = 0; i < graph.size(); i++)
+        std::cout << i << ": " << graph[i];
+}
+
 int main()
 {
-    std::cout << "Hello World!\n";
+    /*std::cout << "Create file?(yes\\no)\n";
+    std::string ans;
+    std::cin >> ans;
+    if (ans == "yes")
+        CreateFile();*/
+        
+
+    auto graph = ReadFile();
+
+    PrintGraph(CountConnectivityComponent(graph));
+
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
