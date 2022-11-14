@@ -73,5 +73,58 @@ std::vector<std::list<int>> CountConnectivityComponent(std::vector<std::list<int
 	}
 
 	return components;
-
 }
+
+void PrintDistance(std::vector<int> distances, int top)
+{
+	std::cout << "Distance from " << top << '\n';
+	for (int i = 0; i < distances.size(); i++)
+		std::cout << i << ' ' << distances[i] << '\n';
+}
+
+std::vector<int> ShotestDistance(std::vector<std::list<int>> graph, int top)
+{
+	std::vector<bool> visited(graph.size(), false);
+	std::list<int> q;
+
+	std::vector<int> parent(graph.size());
+	parent[top] = -1;
+	q.push_back(top);
+	visited[top] = true;
+	while (q.size() != 0)
+	{
+		int front = q.back();
+		q.pop_back();
+		for (int t : graph[front]) {
+			if (!visited[t])
+			{
+				q.push_back(t);
+				parent[t] = front;
+				visited[t] = true;
+			}
+		}
+	}
+
+	std::vector<int> distances(graph.size());
+	for (int i = 0; i < graph.size(); i++)
+	{
+		if (visited[i])
+		{
+			int cur = i;
+			int dist = 0;
+			while (cur != top)
+			{
+				cur = parent[cur];
+				dist++;
+			}
+			distances[i] = dist;
+		}	
+		else
+			distances[i] = -1;
+	}
+
+
+
+	return distances;
+}
+

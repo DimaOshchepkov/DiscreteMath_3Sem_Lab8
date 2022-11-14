@@ -34,7 +34,9 @@ int main()
 
     auto graph = ReadFile();
 
-    PrintGraph(CountConnectivityComponent(graph));
+    //PrintGraph(CountConnectivityComponent(graph));
+
+    PrintDistance(ShotestDistance(graph, 4), 4);
 
 }
 
