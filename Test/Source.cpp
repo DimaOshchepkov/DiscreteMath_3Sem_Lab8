@@ -82,7 +82,7 @@ void PrintDistance(std::vector<int> distances, int top)
 		std::cout << i << ' ' << distances[i] << '\n';
 }
 
-std::vector<int> ShotestDistance(std::vector<std::list<int>> graph, int top)
+std::vector<std::list<int>> ShotestDistance(std::vector<std::list<int>> graph, int top)
 {
 	std::vector<bool> visited(graph.size(), false);
 	std::list<int> q;
@@ -105,22 +105,21 @@ std::vector<int> ShotestDistance(std::vector<std::list<int>> graph, int top)
 		}
 	}
 
-	std::vector<int> distances(graph.size());
+	std::vector<std::list<int>> distances(graph.size());
 	for (int i = 0; i < graph.size(); i++)
 	{
 		if (visited[i])
 		{
 			int cur = i;
-			int dist = 0;
 			while (cur != top)
 			{
+				distances[i].push_back(cur);
 				cur = parent[cur];
-				dist++;
 			}
-			distances[i] = dist;
+			distances[i].push_back(top);
 		}	
 		else
-			distances[i] = -1;
+			distances[i].push_back(-1);
 	}
 
 

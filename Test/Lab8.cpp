@@ -36,7 +36,7 @@ int main()
 
     //PrintGraph(CountConnectivityComponent(graph));
 
-    PrintDistance(ShotestDistance(graph, 4), 4);
+    PrintGraph(ShotestDistance(graph, 4));
 
 }
 

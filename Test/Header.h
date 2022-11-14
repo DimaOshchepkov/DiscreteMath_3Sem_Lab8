@@ -11,7 +11,7 @@ std::vector<std::list<int>> ReadFile(std::string name = "graph.txt");
 
 std::vector<std::list<int>> CountConnectivityComponent(std::vector<std::list<int>> graph);
 
-std::vector<int> ShotestDistance(std::vector<std::list<int>> graph, int top);
+std::vector<std::list<int>> ShotestDistance(std::vector<std::list<int>> graph, int top);
 
 void PrintDistance(std::vector<int> distances, int top);
 
